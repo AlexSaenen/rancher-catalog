@@ -4,5 +4,9 @@ catalog:
   version: "0.0.1"
   description: "Hello world"
 services:
-  wiki-server:
+  web:
     start_on_create: true
+    scale: 1
+  db:
+    start_on_create: true
+    scale: 1
