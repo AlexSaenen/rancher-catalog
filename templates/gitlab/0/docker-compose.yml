@@ -1,0 +1,20 @@
+version: '2'
+services:
+  web:
+    image: rocket.chat:latest
+    tty: true
+    stdin_open: true
+    links:
+      - db
+    labels:
+      io.rancher.container.pull_image: always
+      io.rancher.scheduler.global: 'true'
+  db:
+    image: mongo:3.0
+    volumes:
+      - shared_web:/data/db
+volumes:
+  shared_web:
+    driver: rancher-nfs
+    driver_opts:
+      exportBase: /chatdata

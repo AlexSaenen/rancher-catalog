@@ -1,0 +1,12 @@
+version: '2'
+catalog:
+  name: "chat"
+  version: "0.0.1"
+  description: ""
+services:
+  web:
+    start_on_create: true
+    scale: 1
+  db:
+    start_on_create: true
+    scale: 1
