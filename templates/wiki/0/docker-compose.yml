@@ -1,0 +1,30 @@
+version: '2'
+services:
+  web:
+    name: wiki-web
+    # name: ${SERVICE_NAME}
+    image: mediawiki
+    tty: true
+    stdin_open: true
+    links:
+      - db
+    labels:
+      io.rancher.scheduler.global: 'true'
+    volumes:
+    - shared_web:/var/www/html/images
+    - ./LocalSettings.php:/var/www/html/LocalSettings.php
+  db:
+    image: mariadb
+    environment:
+      MYSQL_DATABASE: my_wiki
+      MYSQL_USER: wikiuser
+      MYSQL_PASSWORD: example
+      MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
+    volumes:
+    - shared_db:/var/www/html/data
+volumes:
+  shared_web:
+    external: true
+    driver: rancher-nfs
+    driver_opts:
+      exportBase: /mediawikidata

@@ -1,0 +1,7 @@
+name: "wiki"
+description: "My MediaWiki"
+version: "0"
+category: "Wiki"
+maintainer: "Alex"
+license: "None"
+projectUrl: ""
