@@ -19,7 +19,11 @@ services:
       MYSQL_PASSWORD: example
       MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
     volumes:
-    - shared_web:/var/www/html/data
+      - type: volume
+        source: shared_web
+        target: /var/www/html/data
+        volume:
+          nocopy: false
 volumes:
   shared_web:
     driver: rancher-nfs
