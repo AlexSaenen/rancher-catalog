@@ -22,7 +22,6 @@ services:
     - shared_web:/var/www/html/data
 volumes:
   shared_web:
-    external: true
     driver: rancher-nfs
     driver_opts:
       exportBase: /mediawikidata
