@@ -12,6 +12,8 @@ services:
     volumes:
       - shared_web:/var/www/html/images
   db:
+    labels:
+      io.rancher.scheduler.global: 'true'
     image: mariadb
     environment:
       MYSQL_DATABASE: my_wiki
