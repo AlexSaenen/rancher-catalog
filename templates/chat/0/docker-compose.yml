@@ -5,7 +5,7 @@ services:
     tty: true
     stdin_open: true
     environment:
-      - ROOT_URL: 'https://chat.local'
+      ROOT_URL: https://chat.local
     links:
       - db
     labels:
