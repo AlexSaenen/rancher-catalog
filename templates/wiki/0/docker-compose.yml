@@ -1,8 +1,6 @@
 version: '2'
 services:
   web:
-    name: wiki-web
-    # name: ${SERVICE_NAME}
     image: mediawiki
     tty: true
     stdin_open: true
