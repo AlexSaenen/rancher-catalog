@@ -1,4 +1,4 @@
-version: '3'
+version: '2'
 services:
   web:
     image: mediawiki
@@ -9,14 +9,8 @@ services:
     labels:
       io.rancher.scheduler.global: 'true'
     volumes:
-      - type: volume
-        source: shared_web
-        target: /var/www/html/images
-        volume:
-          nocopy: false
-      - type: bind
-        source: ./LocalSettings.php
-        target: /var/www/html/LocalSettings.php
+      - shared_web:/var/www/html/images
+      - ./LocalSettings.php:/var/www/html/LocalSettings.php
   db:
     image: mariadb
     environment:
@@ -25,11 +19,7 @@ services:
       MYSQL_PASSWORD: example
       MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
     volumes:
-      - type: volume
-        source: shared_web
-        target: /var/www/html/data
-        volume:
-          nocopy: false
+      - shared_web:/var/www/html/data
 volumes:
   shared_web:
     driver: rancher-nfs
