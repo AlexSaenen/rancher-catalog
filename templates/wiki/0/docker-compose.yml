@@ -8,17 +8,27 @@ services:
       - db
     labels:
       io.rancher.scheduler.global: 'true'
+    environment:
+      MEDIAWIKI_SERVER: http://localhost:8080
+      MEDIAWIKI_SITENAME: MyWiki
+      MEDIAWIKI_LANGUAGE_CODE: en
+      MEDIAWIKI_DB_TYPE: mysql
+      MEDIAWIKI_DB_HOST: db
+      MEDIAWIKI_DB_PORT: 3306
+      MEDIAWIKI_DB_NAME: my_wiki
+      MEDIAWIKI_DB_USER: wikiuser
+      MEDIAWIKI_DB_PASSWORD: example
     volumes:
       - shared_web:/var/www/html/images
   db:
-    image: mariadb
+    image: mysql:5.7
     environment:
       MYSQL_DATABASE: my_wiki
       MYSQL_USER: wikiuser
       MYSQL_PASSWORD: example
-      MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
+      MYSQL_RANDOM_ROOT_PASSWORD: 1
     volumes:
-      - shared_web:/var/www/html/data
+      - shared_web:/var/lib/mysql
 volumes:
   shared_web:
     driver: rancher-nfs
