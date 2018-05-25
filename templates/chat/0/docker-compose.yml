@@ -4,6 +4,8 @@ services:
     image: rocket.chat:latest
     tty: true
     stdin_open: true
+    environment:
+      - ROOT_URL: https://chat.local
     links:
       - db
     labels:
