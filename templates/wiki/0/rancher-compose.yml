@@ -1,4 +1,8 @@
 version: '2'
+catalog:
+  name: "hello"
+  version: "0.0.1"
+  description: "Hello world"
 services:
   wiki-server:
     start_on_create: true
