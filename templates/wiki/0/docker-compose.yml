@@ -14,7 +14,9 @@ services:
         target: /var/www/html/images
         volume:
           nocopy: false
-    # - ./LocalSettings.php:/var/www/html/LocalSettings.php
+      - type: bind
+        source: ./LocalSettings.php
+        target: /var/www/html/LocalSettings.php
   db:
     image: mariadb
     environment:
