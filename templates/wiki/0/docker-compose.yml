@@ -9,8 +9,12 @@ services:
     labels:
       io.rancher.scheduler.global: 'true'
     volumes:
-    - shared_web:/var/www/html/images
-    - ./LocalSettings.php:/var/www/html/LocalSettings.php
+      - type: volume
+        source: shared_web
+        target: /var/www/html/images
+        volume:
+          nocopy: false
+    # - ./LocalSettings.php:/var/www/html/LocalSettings.php
   db:
     image: mariadb
     environment:
