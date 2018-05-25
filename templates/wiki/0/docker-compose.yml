@@ -19,7 +19,7 @@ services:
       MYSQL_PASSWORD: example
       MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
     volumes:
-    - shared_db:/var/www/html/data
+    - shared_web:/var/www/html/data
 volumes:
   shared_web:
     external: true
