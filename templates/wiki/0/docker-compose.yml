@@ -11,7 +11,7 @@ services:
       io.rancher.scheduler.global: 'true'
     volumes:
       - shared_web:/var/www/html/images
-      - /LocalSettings.php:/var/www/html/LocalSettings.php
+      - shared_web:/var/www/html/LocalSettings.php
   db:
     image: mariadb
     environment:
