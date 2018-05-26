@@ -13,11 +13,19 @@ services:
       io.rancher.container.pull_image: always
       io.rancher.scheduler.global: 'true'
     volumes:
-      - shared_web:/etc/gitlab
-      - shared_web:/var/opt/gitlab
-      - shared_web:/var/log/gitlab
+      - shared_etc:/etc/gitlab
+      - shared_opt:/var/opt/gitlab
+      - shared_log:/var/log/gitlab
 volumes:
-  shared_web:
+  shared_etc:
     driver: rancher-nfs
     driver_opts:
-      exportBase: /gitlabdata
+      exportBase: /gitlabdata/etc/gitlab
+  shared_opt:
+    driver: rancher-nfs
+    driver_opts:
+      exportBase: /gitlabdata/var/opt/gitlab
+  shared_log:
+    driver: rancher-nfs
+    driver_opts:
+      exportBase: /gitlabdata/var/log/gitlab
