@@ -1,7 +1,7 @@
 version: '2'
 catalog:
   name: "gitlab"
-  version: "0.0.1"
+  version: "0.0.2"
   description: ""
 services:
   web:
