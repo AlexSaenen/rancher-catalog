@@ -3,6 +3,13 @@ catalog:
   name: "wiki"
   version: "0.0.2"
   description: ""
+  questions:
+    - variable: MYSQL_DATABASE
+      label: "mysql database name"
+    - variable: MYSQL_USER
+      label: "mysql database user name"
+    - variable: MYSQL_PASSWORD
+      label: "mysql database user password"
 services:
   web:
     start_on_create: true
