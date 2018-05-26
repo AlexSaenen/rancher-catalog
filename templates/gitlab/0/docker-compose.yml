@@ -5,6 +5,7 @@ services:
     hostname: gitlab.local
     tty: true
     stdin_open: true
+    privileged: true
     environment:
       GITLAB_OMNIBUS_CONFIG: |
         external_url 'https://gitlab.local'
