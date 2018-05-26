@@ -13,8 +13,6 @@ services:
       io.rancher.scheduler.global: 'true'
   db:
     image: mongo:3.0
-    labels:
-      io.rancher.scheduler.global: 'true'
     volumes:
       - shared_web:/data/db
 volumes:
