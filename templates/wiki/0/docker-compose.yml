@@ -1,7 +1,7 @@
 version: '2'
 services:
   web:
-    image: alexandersaenen/mediawiki:latest
+    image: mediawiki:latest
     tty: true
     stdin_open: true
     links:
@@ -10,7 +10,8 @@ services:
       io.rancher.container.pull_image: always
       io.rancher.scheduler.global: 'true'
     volumes:
-      - shared_web:/var/www/html/images
+      - shared_images:/var/www/html/images
+      - shared_settings:/var/www/html/LocalSettings.php
   db:
     image: mariadb
     environment:
@@ -19,9 +20,17 @@ services:
       MYSQL_PASSWORD: example
       MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
     volumes:
-      - shared_web:/var/www/html/data
+      - shared_data:/var/www/html/data
 volumes:
-  shared_web:
+  shared_data:
     driver: rancher-nfs
     driver_opts:
-      exportBase: /mediawikidata
+      exportBase: /mediawikidata/var/www/html/data
+  shared_images:
+    driver: rancher-nfs
+    driver_opts:
+      exportBase: /mediawikidata/var/www/html/images
+  shared_settings:
+    driver: rancher-nfs
+    driver_opts:
+      exportBase: /mediawikidata/var/www/html/LocalSettings.php
