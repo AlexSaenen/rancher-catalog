@@ -11,7 +11,6 @@ services:
       io.rancher.scheduler.global: 'true'
     volumes:
       - shared_images:/var/www/html/images
-      - shared_settings:/var/www/html/LocalSettings.php
   db:
     image: mariadb
     environment:
@@ -30,7 +29,3 @@ volumes:
     driver: rancher-nfs
     driver_opts:
       exportBase: /mediawikidata/var/www/html/images
-  shared_settings:
-    driver: rancher-nfs
-    driver_opts:
-      exportBase: /mediawikidata/var/www/html/LocalSettings.php
