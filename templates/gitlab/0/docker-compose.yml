@@ -1,0 +1,22 @@
+version: '2'
+services:
+  web:
+    image: gitlab/gitlab-ce:latest
+    hostname: gitlab.local
+    tty: true
+    stdin_open: true
+    environment:
+    GITLAB_OMNIBUS_CONFIG: |
+      external_url 'https://gitlab.local'
+    labels:
+      io.rancher.container.pull_image: always
+      io.rancher.scheduler.global: 'true'
+    volumes:
+      - shared_web:/etc/gitlab
+      - shared_web:/var/opt/gitlab
+      - shared_web:/var/log/gitlab
+volumes:
+  shared_web:
+    driver: rancher-nfs
+    driver_opts:
+      exportBase: /gitlabdata

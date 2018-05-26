@@ -1,0 +1,7 @@
+name: "gitlab"
+description: "My GitLab"
+version: "0"
+category: "Versioning"
+maintainer: "Alex"
+license: "None"
+projectUrl: ""
