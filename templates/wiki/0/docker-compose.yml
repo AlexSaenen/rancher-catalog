@@ -10,8 +10,7 @@ services:
       io.rancher.container.pull_image: always
       io.rancher.scheduler.global: 'true'
     volumes:
-      - shared_web:/var/www/html/images
-      - shared_web:/var/www/html/LocalSettings.php
+      - shared_web:/var/www/html
   db:
     image: mariadb
     environment:
