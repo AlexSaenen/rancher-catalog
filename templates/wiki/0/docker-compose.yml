@@ -1,7 +1,7 @@
 version: '2'
 services:
   web:
-    image: alexandersaenen/mediawiki:latest
+    image: mediawiki:latest
     tty: true
     stdin_open: true
     links:
@@ -11,6 +11,7 @@ services:
       io.rancher.scheduler.global: 'true'
     volumes:
       - shared_web:/var/www/html/images
+      - /LocalSettings.php:/var/www/html/LocalSettings.php
   db:
     image: mariadb
     environment:
